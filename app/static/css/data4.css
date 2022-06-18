@@ -1,0 +1,294 @@
+@charset "utf-8";
+p.pager {
+    float: right;
+    margin-right: 10px;
+    margin-top: 8px
+}
+
+.pager {
+    margin: 12px 12px 0 0;
+    color: #444;
+    border-bottom: 1px solid #555;
+    font: 14px Verdana, "黑体";
+    border: none;
+    height: 30px;
+}
+
+.pager a, .pager span, .pager input {
+    float: left;
+    padding: 2px 5px;
+}
+
+.pager a {
+    color: #0088CC;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin-right: 2px
+}
+
+.pager a:hover {
+    border-bottom: 2px solid #325594;
+    color: #325594;
+    background: #f5f5f5
+}
+
+.pager .prev, .pager .next, .pager .current {
+    margin: 0;;
+    margin-right: 2px;
+}
+
+.pager .prev, .pager .next {
+    width: 50px
+}
+
+.pager span.prev, .pager span.next {
+    color: #888;
+}
+
+.pager .current {
+    background: #0088cc;
+    color: #fff;
+    border: 1px solid #0088cc
+}
+
+.pager input {
+    border: 1px solid #aaa;
+    height: 18px
+}
+
+
+
+
+/*logo+搜索*/
+.vT_search_sortby li {
+    display: block;
+    width: 33.1%;
+    height: 30px;
+    background: #ECECEC;
+    border-right: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    color: #555
+}
+
+.vT_search_sortby li.fin {
+   width:238px;
+}
+
+.vT_search_sortby li.current {
+    background: #cc0000;
+    color: #fff
+}
+
+.vT_search_sortby li.current a {
+    color: #fff;
+    text-decoration: none
+}
+
+
+.vT_search_sortby li.current2 {
+    background: #0082d4;
+    color: #fff
+}
+
+
+.vT_search_sortby li a {
+    color: #555;
+    text-decoration: none
+}
+
+
+
+.code {
+    font-family: Arial;
+    font-style: italic;
+    color: blue;
+    font-size: 18px;
+    border: 0;
+    padding: 2px 3px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    cursor: pointer;
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #288bc4;
+}
+
+/*logo+搜索 -end*/
+
+.vT_bidSearch_outsider {
+    width: 100%
+}
+
+.vT_bidSearch_addon_con {
+    width: 100%;
+    border-bottom: 1px dotted #ccc
+}
+
+.vT_bidSearch_addon_block {
+    width: 240px;
+    height: 50px;
+    float: left;
+    margin-left: 30px;
+}
+
+.vT_bidSearch_addon_block2 {
+    width: 80px;
+    height: 50px;
+    float: left;
+    margin-left: 30px;
+}
+
+.vT_bidSearch_addon_block2 p, .vT_bidSearch_addon_block p {
+    width: 80px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bolder;
+    color: #6a6a6a;
+    display: block;
+    margin-right: 10px;
+    float: left;
+    margin-top: 13px;
+    height: 30px
+}
+
+.vT_bidSearch_addon_block input {
+    font-size: 16px;
+    width: 130px;
+    line-height: 20px;
+    height: 21px;
+    margin-top: 8px;
+    border: 1px solid #c7d8e3;
+}
+
+.vT-srch-result-channel-list3 li, .vT-srch-result-channel-list2 li {
+    line-height: 20px;
+    margin-left: 25px;
+    display: block;
+    float: left;
+    width: 90px;
+    height: 20px;
+    font-size: 14px;
+    color: #6a6a6a;
+    margin-bottom: 10px;
+    text-align: center
+}
+
+.vT-srch-result-channel-list3 li {
+    width: 90px
+}
+
+
+#zonearea {
+    position: relative
+}
+
+.zone_list_container {
+    position: absolute;
+    width: 370px;
+    background: #fff;
+    border: 1px solid #c7d8e3;
+    z-index: 999;
+    margin-left: 90px;
+    margin-top: -1px;
+    padding: 0 0 5px 5px;
+    display: none
+}
+
+ul.zone_list li {
+    width: 60px;
+    float: left;
+    height: 26px;
+    margin: 5px 0 0 0;
+    line-height: 26px;
+    color: #777;
+    text-align: center;
+}
+
+.cusTime_container {
+    width: 865px;
+    height: 28px;
+    position: absolute;
+    top: 0;
+    left: 25px;
+    height: 35px;
+    background-position: 372px 0;
+    margin-top:-15px;
+    padding-top:13px;
+}
+
+.cusTime_container input {
+    font-size: 16px;
+    width: 130px;
+    line-height: 20px;
+    height: 21px;
+    border: 1px solid #c7d8e3;
+    float: left;
+    cursor: pointer;
+}
+
+.cusTime_container span {
+    background: #ca0000;
+    color: #fff;
+    cursor: pointer;
+    width: 90px;
+    height: 24px;
+    float: left;
+    font-size: 14px;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 10px
+}
+
+.cusTime_container span.inf {
+    background: #eee;
+    color: #333;
+    width: 220px;
+    height: 43px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 18px;
+    cursor: normal;
+    float: right;
+    margin-top:-13px;
+    padding-top:7px;
+    margin-left:-5px
+}
+
+.cusTime_container em {
+    width: 50px;
+    height: 25px;
+    display: block;
+    float: left;
+    margin-left: 5px;
+    margin-top: 0;
+    cursor: pointer;
+    color:#fff;
+    font-weight:bolder;
+    text-align:center
+}
+
+.cusTime_container em.dose {
+    background:#0088CC;
+    margin-left: 8px
+}
+
+.cusTime_container em.clos {
+    background:#505050;
+    margin-left: 8px
+}
+
+#inpCusStartTime {
+    border-right: none
+}

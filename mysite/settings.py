@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from mysite.tools import data
+from mysite.tools import load_sql_info
+
+data = load_sql_info("test.json")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

@@ -1,8 +1,13 @@
 from pathlib import Path
 import json
 
-p = Path()
-p = p.home().joinpath(".jiejie/mysql/mysite.json")
 
-data = json.loads(p.read_text())
-
+def load_sql_info(filename):
+    """
+    mysite.json
+    :param filename:
+    :return:
+    """
+    p = Path()
+    p = p.home().joinpath(".jiejie/mysql").joinpath(filename)
+    return json.loads(p.read_text())
