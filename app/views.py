@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from .sql import get_ccgp
 # Create your views here.
-from .utils.form import HostModelForm, ccgpModelForm
+from .utils.form import ccgpModelForm
 from .utils.pagination import Pagination
 from app import models
+from mysite.tools import get_domain_url
 
 
 def index(request):
@@ -17,40 +18,34 @@ def data(request):
     d = request.POST.get("change")
     if d == "1":
         infos = get_ccgp()
-        # print(*infos[::3], sep="/n")
         for info in infos:
             # 修改一下info，然后传进去就行了
+            print(info.get("title"))
             link = info.get("link")
-            # django 有外键约束的值，怎么插入
-            models.ccgp.objects.create(info)
+            domain, url = get_domain_url(link)
+            info["link"] = url
+            info["domain"] = domain
+            form = ccgpModelForm(data=info)
+            if form.is_valid():
+                form.save()
     return render(request, "data.html")
 
 
-def domain_list(request):
-    queryset = models.Host.objects.all()
-    page_object = Pagination(request, queryset, page_size=10)
-    context = {
-        "queryset": page_object.page_queryset,
-        "page_string": page_object.html(),
-    }
-    return render(request, 'domain_list.html', context)
-
-
-def domain_add(request):
-    if request.method == "GET":
-        form = HostModelForm()
-        return render(request, 'domain_add.html', {"form": form})
-    form = HostModelForm(data=request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('/domain/list/')
-    return render(request, 'domain_add.html', {"form": form})
-
-
 def ccgp_list(request):
-    queryset = models.ccgp.objects.all()
+    data_dict = {}
+    search_data = request.GET.get('q', "")
+    if search_data:
+        data_dict["title__contains"] = search_data
+
+    queryset = models.ccgp.objects.filter(**data_dict).order_by("-publish_time")
+
+    # context = {
+    #     "search_data": search_data,
+
+    # queryset = models.ccgp.objects.all()
     page_object = Pagination(request, queryset, page_size=10)
     context = {
+        "search_data": search_data,
         "queryset": page_object.page_queryset,
         "page_string": page_object.html(),
     }
@@ -59,16 +54,17 @@ def ccgp_list(request):
 
 def ccgp_add(request):
     if request.method == "GET":
-        test = request.GET.get("test")
         form = ccgpModelForm()
-        # form.instance.
-        if test:
-            print(test)
-            return render(request, 'ccgp_add.html', {"form": form})
+        # test = request.GET.get("test")
+        # # form.instance.
+        # if test:
+        #     print(test)
+        #     return render(request, 'ccgp_add.html', {"form": form})
 
         return render(request, 'ccgp_add.html', {"form": form})
     form = ccgpModelForm(data=request.POST)
     if form.is_valid():
-        form.save()
+        # 暂不保存用户提交的数据
+        # form.save()
         return redirect('/ccgp/list/')
     return render(request, 'ccgp_add.html', {"form": form})

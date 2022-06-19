@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <span class="blank37"></span>
+    {#    <span class="blank37"></span>#}
 
     {% comment %}    <div class="vT_z">
         <div class="vT-srch-result-top">
@@ -73,10 +73,31 @@
     <!---->
     <span class="blank10"></span>{% endcomment %}
 
-    <div class="vT_z" id="vT_bidSearch_o">
-        <div class="vT_bidSearch_outsider">
+    <div class="vT_z" id="vT_bidSearch_o" style="margin-bottom: 10px;margin-top: 10px;border-top: solid 1px #fff">
+        <div style="margin-bottom: 20px;margin-top: 10px" class="clearfix">
+            <a class="btn btn-success" href="/ccgp/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                新建公告
+            </a>
+
+            <div style="float: right;width: 300px;">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search for..."
+                               value="{{ search_data }}">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                      </span>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        {% comment %}<div class="vT_bidSearch_outsider">
             <!--选择内容-->
-            {% comment %}<div class="vT_bidSearch_addon_con" style="margin-top:20px">
+            <div class="vT_bidSearch_addon_con" style="margin-top:20px">
             <div class="vT_bidSearch_addon_block2" style="margin-left:0;float:left;"><p
                     style="vertical-align:top;margin-top:0;padding-top:0">类型</p></div>
             <div style="float:left;width:870px;height:60px">
@@ -98,9 +119,9 @@
                 </ul>
             </div>
             <div style="clear:both"></div>
-        </div>{% endcomment %}
+        </div>
             <!--选择内容-->
-            {% comment %}<div class="vT_bidSearch_addon_con">
+            <div class="vT_bidSearch_addon_con">
             <div class="vT_bidSearch_addon_block2" style="margin-left:0;float:left;"><p
                     style="vertical-align:top;margin-top:0;padding-top:15px">类别</p></div>
             <div style="float:left;width:870px;height:30px;margin-top:15px">
@@ -111,9 +132,9 @@
                 </ul>
             </div>
             <div style="clear:both"></div>
-        </div>{% endcomment %}
+        </div>
             <!--选择内容-->
-            {% comment %}<div class="vT_bidSearch_addon_con">
+            <div class="vT_bidSearch_addon_con">
             <div class="vT_bidSearch_addon_block2" style="margin-left:0;float:left;"><p
                     style="vertical-align:top;margin-top:0;padding-top:15px">品目</p></div>
             <div style="float:left;width:870px;height:30px;margin-top:15px">
@@ -125,9 +146,9 @@
                 </ul>
             </div>
             <div style="clear:both"></div>
-        </div>{% endcomment %}
+        </div>
             <!--选择内容-->
-            {% comment %}<div class="vT_bidSearch_addon_con">
+            <div class="vT_bidSearch_addon_con">
             <div class="vT_bidSearch_addon_block2" style="margin-left:0;float:left;"><p
                     style="vertical-align:top;margin-top:0;padding-top:15px">时间</p></div>
             <div style="float:left;width:870px;height:30px;margin-top:15px;position:relative">
@@ -153,7 +174,7 @@
                 </div>
             </div>
             <div style="clear:both"></div>
-        </div>{% endcomment %}
+        </div>
             <!--输入内容-->
             <div class="vT_bidSearch_addon_con">
                 <div class="vT_bidSearch_addon_block" style="margin-left:0">
@@ -244,9 +265,9 @@
                 <div style="clear:both"></div>
             </div>
             <div style="clear:both"></div>
-        </div>
+        </div>{% endcomment %}
     </div>
-    <span class="blank20"></span>
+    {#    <span class="blank20"></span>#}
     <!---->
     <div class="vT_z">
         {% comment %}<div style="width:100%;height:30px">
@@ -281,7 +302,7 @@
 
 
         <!---->
-        <span class="blank10"></span>
+        {#        <span class="blank10"></span>#}
 
         <div class="vT_z" style="position:relative">
             <div class="vT-srch-result">
@@ -290,7 +311,7 @@
                         <ul class="vT-srch-result-list-bid">
                             {% for obj in queryset %}
                                 <li>
-                                    <a href=""
+                                    <a href="/static{{ obj.link }}"
                                        style="line-height:18px" target="_blank">
                                         {{ obj.title }}
                                         {#                                门头沟区大台街道智慧平安小区建设项目公开招标公告#}
@@ -298,7 +319,7 @@
                                     {#                                2022.06.17 16:16:51#}
                                     <p></p>
                                     <span>
-                                {{ obj.publish_time }}
+                                        {{ obj.publish_time }}
                                         | 采购人：{{ obj.purchaser }}
                                         | 代理机构：{{ obj.agency }}
                                         <br/>
@@ -307,7 +328,7 @@
                                         </strong>
                                         | <a href="javascript:void(0)">{{ obj.province }}</a>
                                         | <strong style="font-weight:bolder"> </strong>
-                                        | <a href="//{{ obj.host }}{{ obj.link }}" target="_blank">原文链接</a>
+                                        | <a href="//{{ obj.domain }}{{ obj.link }}" target="_blank">原文链接</a>
                                     </span>
                                 </li>
                             {% endfor %}
@@ -422,6 +443,12 @@
                     $("#botm_cpy").html(botmcpy);
                 </script>
             </div>
+        </div>
+        <div class="clearfix">
+            <ul class="pagination">
+                {{ page_string }}
+            </ul>
+
         </div>
     </div>
 {% endblock %}

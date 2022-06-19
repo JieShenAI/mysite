@@ -21,9 +21,7 @@ from app import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.index),
-    path('data', views.data),
-    path('domain/list/', views.domain_list),
-    path('domain/add/', views.domain_add),
+    path('data/', views.data),
     path('ccgp/add/', views.ccgp_add),
     path('ccgp/list/', views.ccgp_list),
 ]

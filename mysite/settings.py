@@ -136,3 +136,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# STATIC_ROOT = ""
+STATICFILES_DIRS = [
+    # BASE_DIR / "static",
+    # BASE_DIR / "xxx", # xxx为app文件夹下的文件名
+    BASE_DIR / "ccgp_static",
+    r"C:\Users\jshen\Downloads\ccgp",
+]
