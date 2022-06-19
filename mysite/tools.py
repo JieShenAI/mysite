@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import platform
 
 
 def load_sql_info(filename):
@@ -24,3 +25,12 @@ def get_domain_url(link: str):
     start = link.index(domain) + len(domain)
     return domain, link[start::]
 
+
+def load_static():
+    _ = Path().home().joinpath(".jiejie/statics")
+    if platform.system().lower() == 'windows':
+        p = _.joinpath("win.json")
+    elif platform.system().lower() == 'linux':
+        p = _.joinpath("linux.json")
+    # 其他平台 ，暂不支持，直接报错 Permission denied
+    return json.loads(p.read_text())
