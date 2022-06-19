@@ -28,6 +28,28 @@ class ccgp(models.Model):
     link = models.CharField(verbose_name="链接", max_length=100, unique=True)
     domain = models.CharField(verbose_name="域名", max_length=30)
 
+
+class users(models.Model):
+    email = models.CharField(verbose_name="邮箱", max_length=30, unique=True)
+    username = models.CharField(verbose_name="用户名", max_length=32, unique=True)
+    password = models.CharField(verbose_name="密码", max_length=64)
+    status_choices = (
+        (0, "停用"),
+        (1, "正常")
+    )
+    status = models.SmallIntegerField(verbose_name="状态", choices=status_choices, default=0)
+    level_choices = (
+        (1, "正常用户"),
+        (2, "2级"),
+        (3, "3级"),
+        (4, "4级"),
+    )
+    level = models.SmallIntegerField(verbose_name="等级", choices=level_choices, default=1)
+
+    # 暂不引入部门
+    def __str__(self):
+        return self.username
+
 # class proxy(models.Model):
 #     """
 #     """

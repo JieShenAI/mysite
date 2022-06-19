@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from mysite.tools import load_sql_info, load_static
 
-data = load_sql_info("gov.json")
+data = load_sql_info("test.json")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app.middleware.auth.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -141,6 +142,5 @@ STATICFILES_DIRS = [
     # BASE_DIR / "static",
     # BASE_DIR / "xxx", # xxx为app文件夹下的文件名
     # BASE_DIR / "ccgp_static",
-    # r"C:\Users\jshen\Downloads\ccgp",
     load_static().get("ccgp"),
 ]

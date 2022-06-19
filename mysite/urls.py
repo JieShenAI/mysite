@@ -16,12 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app import views
+from app.views import ccgp, account
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', ccgp.index),
     # path('data/', views.data),
-    path('ccgp/add/', views.ccgp_add),
-    path('ccgp/list/', views.ccgp_list),
+    path('ccgp/add/', ccgp.ccgp_add),
+    path('ccgp/list/', ccgp.ccgp_list),
+
+    # 用户管理
+    # 登录
+    path('login/', account.login),
+    path('logout/', account.logout),
+    path('image/code/', account.image_code),
+    path('user/register/', account.register),
 ]
