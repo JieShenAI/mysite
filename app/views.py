@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from .sql import get_ccgp
 # Create your views here.
 from .utils.form import ccgpModelForm
 from .utils.pagination import Pagination
@@ -12,23 +11,23 @@ def index(request):
 
 
 # 数据转化
-def data(request):
-    if request.method == "GET":
-        return render(request, "data.html")
-    d = request.POST.get("change")
-    if d == "1":
-        infos = get_ccgp()
-        for info in infos:
-            # 修改一下info，然后传进去就行了
-            print(info.get("title"))
-            link = info.get("link")
-            domain, url = get_domain_url(link)
-            info["link"] = url
-            info["domain"] = domain
-            form = ccgpModelForm(data=info)
-            if form.is_valid():
-                form.save()
-    return render(request, "data.html")
+# def data(request):
+#     if request.method == "GET":
+#         return render(request, "data.html")
+#     d = request.POST.get("change")
+#     if d == "1":
+#         infos = get_ccgp()
+#         for info in infos:
+#             # 修改一下info，然后传进去就行了
+#             print(info.get("title"))
+#             link = info.get("link")
+#             domain, url = get_domain_url(link)
+#             info["link"] = url
+#             info["domain"] = domain
+#             form = ccgpModelForm(data=info)
+#             if form.is_valid():
+#                 form.save()
+#     return render(request, "data.html")
 
 
 def ccgp_list(request):
