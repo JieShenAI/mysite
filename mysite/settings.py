@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from mysite.tools import load_sql_info
+from mysite.tools import load_sql_info, load_static
 
-data = load_sql_info("test.json")
+data = load_sql_info("gov.json")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -140,6 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     # BASE_DIR / "static",
     # BASE_DIR / "xxx", # xxx为app文件夹下的文件名
-    BASE_DIR / "ccgp_static",
-    r"C:\Users\jshen\Downloads\ccgp",
+    # BASE_DIR / "ccgp_static",
+    # r"C:\Users\jshen\Downloads\ccgp",
+    load_static().get("ccgp"),
 ]
