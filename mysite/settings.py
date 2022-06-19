@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from mysite.tools import load_sql_info, load_static
 
-data = load_sql_info("test.json")
+data = load_sql_info("gov.json")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
