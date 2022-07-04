@@ -18,11 +18,11 @@ class ccgp(models.Model):
     publish_time = models.DateTimeField(verbose_name="发布时间")
     # 确实有名称重复的公告
     title = models.TextField(verbose_name="标题")
-    purchaser = models.CharField(verbose_name="采购人", default="", max_length=50)
-    agency = models.CharField(verbose_name="代理机构", default="", max_length=50)
+    purchaser = models.CharField(verbose_name="采购人", default="", max_length=100)
+    agency = models.CharField(verbose_name="代理机构", default="", max_length=100)
     announce_type = models.CharField(verbose_name="公告类型", default="", max_length=10)
     # 有的没有省份
-    province = models.CharField(verbose_name="省份", default=None, max_length=10, null=True, blank=True)
+    province = models.CharField(verbose_name="省份", default="", max_length=10, null=True, blank=True)
     txt = models.TextField(verbose_name="文本", default="")
     map = models.TextField(verbose_name="公告概要", default="")
     link = models.CharField(verbose_name="链接", max_length=100, unique=True)
