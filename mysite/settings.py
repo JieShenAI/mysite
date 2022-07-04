@@ -15,7 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from mysite.tools import load_sql_info, load_static
 
-data = load_sql_info("gov.json")
+data = load_sql_info("sql_v5.json")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -50,7 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'app.middleware.auth.AuthMiddleware',
+    # 取消中间件用户登录检查，对所有人开放
+    # 'app.middleware.auth.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
