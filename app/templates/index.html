@@ -1,4 +1,235 @@
-{% extends 'layout.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>北达规划</title>
+    <script defer src="https://www.liando.cn/front/web/assets/js/main.js"></script>
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="static/css/carousel.css">
+    <script src="static/js/jquery-3.6.0.min.js"></script>
+    <script src="static/swiper/swiper-bundle.min.js"></script>
+</head>
+<body class="show">
+    <div class="g-head">
+        <div class="wal">
+            <a href="#" class="logo"></a>
+            <div class="btn">
+                <form action="#" method="get">
+                    <div class="search">
+                        <div class="submit"><input type="submit" value=""></div>
+                        <div class="form">
+                            <div class="input"><input type="text" placeholder="请输入关键词" name="key"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="g-nav">
+                <ul>
+                    <li><a href="/ccgp/list/" class="name">采购公告</a></li>
+                    <li><a href="#" class="name">关于北达</a>
+                        <div class="list">
+                            <dl>
+                                <dd><a href="#">企业文化</a></dd>
+                                <dd><a href="#">企业荣誉</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li><a href="#" class="name">品质园区</a></li>
+                    <li><a href="#" class="name">产业服务</a>
+                        <div class="list">
+                            <dl>
+                                <dd><a href="#">政策服务</a></dd>
+                                <dd><a href="#">人才服务</a></dd>
+                                <dd><a href="#">文化活动</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li><a href="#" class="name">新闻中心</a>
+                        <div class="list">
+                            <dl>
+                                <dd><a href="#">项目动态</a></dd>
+                                <dd><a href="#">北达专题</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li><a href="https://www.pkuplanning.com/html/contact/" class="name">联系我们</a>
+                        <div class="list">
+                            <dl>
+                                <dd><a href="#">联系方式</a></dd>
+                                <dd><a href="#">招贤纳士</a></dd>
+                            </dl>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-{% endblock %}
+    <div id="carousel">
+        <div class="swiper swiper-3d ">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="https://www.pkuplanning.com/html/pic/d/468.html">
+                        <img src="https://www.pkuplanning.com/upload/20200715100447.jpg" /><p>鞍山市国土空间总体规划</p>
+                    </a>
+
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://www.pkuplanning.com/html/pic/d/467.html">
+                        <img src="https://www.pkuplanning.com/upload/20200715100557.jpg" /><p>河池市国土空间总体规划</p>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://www.pkuplanning.com/html/pic/d/464.html">
+                        <img src="https://www.pkuplanning.com/upload/20200412020234.jpg" /><p>百色市乐业县国土空间总体规划</p>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://www.pkuplanning.com/html/pic/d/513.html">
+                        <img src="https://www.pkuplanning.com/upload/20200412020626.jpg" /><p>老挝万象塞色塔综合开发区总体规划</p>
+                    </a>
+                </div>
+
+                <div class="swiper-slide">
+                    <a href="https://www.pkuplanning.com/html/pic/d/514.html">
+                        <img src="https://www.pkuplanning.com/upload/20200412021233.jpg" /><p>威海市文登开发区总体规划</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <script>
+        (function(){
+            slideW = 300;//一张图300px, 每面四张角度22.5（PI/8），中心角度PI/16
+        radius = slideW*0.5/Math.sin(Math.PI/16);//半径。圆心并不是视点中心，视点在1200px
+
+        carouselSwiper = new Swiper('#carousel .swiper', {
+            watchSlidesProgress: true,
+            slidesPerView: 'auto',
+            centeredSlides: false,
+            loop: true,
+            loopedSlides: 4,
+            grabCursor:true,
+    //	autoplay: true,
+            navigation: {
+                nextEl: '#carousel .swiper-button-next',
+                prevEl: '#carousel .swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                //clickable :true,
+            },
+            on: {
+                progress: function(swiper, progress) {
+                    for (i = 0; i < this.slides.length; i++) {
+                        var slide = this.slides.eq(i);
+                        var slideProgress = this.slides[i].progress;
+                        translateX = (slideProgress+1.5)*( slideW/3 - Math.cos((slideProgress+1.5)*0.125*Math.PI)*slideW*1.1/3) + 'px';//调整图片间距，根据图片宽度改变数值实现自适应
+                        rotateY = (slideProgress+1.5)*22.5 ;//图片角度
+                        translateZ = ( radius - Math.cos((slideProgress+1.5)*0.125*Math.PI)*radius - 150) + 'px';//调整图片远近，刚好4个在画框内
+                        slide.transform('translateX(' + translateX + ') translateZ(' + translateZ + ') rotateY(' + rotateY + 'deg)');
+
+                    }
+                },
+                setTransition: function(swiper, transition) {
+                    for (var i = 0; i < this.slides.length; i++) {
+                        var slide = this.slides.eq(i)
+                        slide.transition(transition);
+                    }
+
+                }
+            }
+
+        })
+        })();
+    </script>
+
+    <div class="index3-service wal">
+        <div class="wal1410 index3-title">
+            <h2>打造产业规划核心能力</h2>
+            <img src="#" alt="" class="en">
+        </div>
+        <div class="list">
+            <ul>
+                  <!-- Swiper -->
+                <div class="swiper mySwiper swiper-service">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slide-inner">
+                                <li class="">
+                                    <div class="wal1410">
+                                        <div class="video">
+                                            <div>
+                                                <img src="https://www.pkuplanning.com/upload/20200414165718.jpg" alt="">
+                                            </div>
+                                            <div class="time">
+                                                <div>2022</div>
+                                                <i></i>
+                                                <div>05-27</div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <h2>鞍山市城市发展战略规划</h2>
+                                            <div class="content">
+                                                <p>《鞍山市城市发展战略规划》梳理了建国 70 年历程中，鞍山的发展得失，提出了以国家安全为基础，创新、开放、品质发展理念下的 鞍山城市发展愿景——建设活力幸福新钢都，让活力成为城市最突出的气质和发展驱动力。以走在最前列的大视野、大格局、大担当， 为城市能级提升设计战略“蓝图”，为鞍山实现高质量发展提供定向“航标”。
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slide-inner">
+                                <li>
+                                    <div class="wal1410">
+                                        <div class="video">
+                                            <div>
+                                                <img src="https://www.pkuplanning.com/upload/20200507102200.jpg" alt="">
+                                            </div>
+                                            <div class="time">
+                                                <div>2022</div>
+                                                <i></i>
+                                                <div>06-02</div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <h2>五大连池青山湿地公园与迎宾大道景观规划设</h2>
+                                            <div class="content">
+                                                <p>规划提出迎宾大道“城市走廊”（融合现代与自然，体现城市文化的绿色、生态的前沿景观开放走廊）、“城市门户”（符合“青山绿水、生态城市”的城市总体形象，充分展现五大连池的人文风貌，成为五大连池城市形象代表）的总体形象定位，充分利用曲线型元素，曲线形植物种植等，构成景观空间的纹理脉络，展现五大连池活泼、优美的城市特色；</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <script>
+
+        (function(){
+            var swiper = new Swiper(".swiper-service", {
+            navigation: {
+                nextEl: ".list .swiper-button-next",
+                prevEl: ".list .swiper-button-prev",
+          },
+        });
+        })();
+
+      </script>
+</body>
+</html>

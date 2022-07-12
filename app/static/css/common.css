@@ -1,0 +1,124 @@
+a {
+  text-decoration: none;
+}
+html {
+  font-size: 100px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 320px / 15;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 360px / 15;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 375px / 15;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 384px / 15;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 400px / 15;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 414px / 15;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 424px / 15;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 480px / 15;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 540px / 15;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 720px / 15;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 750px / 15;
+  }
+}
+a {
+  color: #27292a;
+  text-decoration: none;
+  outline: none;
+}
+a:link {
+  text-decoration: none;
+  outline: none;
+}
+a:visited {
+  text-decoration: none;
+  outline: none;
+}
+a:hover {
+  text-decoration: none;
+  color: #00b0ec;
+  outline: none;
+}
+li {
+  list-style: outside none;
+}
+h1 {
+  font-size: 16px;
+}
+h2,
+h3,
+h4,
+h5 {
+  font-size: 14px;
+}
+h5 {
+  font-size: 12px;
+}
+textarea,
+input {
+  background: transparent;
+  font-size: 12px;
+  font-family: Arial, "Microsoft Yahei", "Source Han Sans";
+  color: #888;
+  outline: none;
+  border: 0;
+}
+em {
+  font-style: normal;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  border: 0;
+}
+.clear {
+  clear: both;
+  height: 0;
+  display: block;
+  _display: inherit;
+}
+.before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
