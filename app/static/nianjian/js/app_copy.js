@@ -310,7 +310,7 @@ function renderMap(mapTitle, mapJson, customerNum, colorMax = 1500) {
       //提示框信息
       trigger: "item",
       // formatter: '{b}\n{c}人',
-      formatter: "{b}\n{c}",
+      formatter: "{b}\n{c}亿",
     },
     toolbox: {
       //工具box

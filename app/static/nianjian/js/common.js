@@ -46,9 +46,9 @@ var provinces = {
 //直辖市和特别行政区-只有二级地图，没有三级地图
 var special = ['北京', '天津', '上海', '重庆', '香港', '澳门']
 //china.json 文件
-let chinaJson = 'static/map/china.json'
-let provinceJson = 'static/map/province/'
-let cityJson = 'static/map/city/'
+let chinaJson = '/static/nianjian/map/china.json'
+let provinceJson = '/static/nianjian/map/province/'
+let cityJson = '/static/nianjian/map/city/'
 var mapdata = []
 let geoCoordMap = {}
 //存储切换的每一级地图信息
@@ -108,10 +108,14 @@ function getPrefixUrlPath() {
 //跳转前缀url
 let baseUrl = getPrefixUrlPath()
 let argTmonth = '&tmonth=' + searchtime
-let getProvNumberUrl = 'mock/province.json'
-let getCityNumberUrl = 'mock/city/'
-let getAreaNumberUrl = 'mock/area/'
+let getProvNumberUrl = '/static/nianjian/mock/province.json'
+let getCityNumberUrl = '/static/nianjianmock/city/'
+let getAreaNumberUrl = '/static/nianjian/mock/area/'
 let getRegionPreMonthCusUrl = ''
+
+// jie
+let secondUrl = "/static/json/2000/"
+let getProvNumber2000Url = "/static/json/2000/province.json"
 
 /** 获取全国省份客户数、销售额 */
 let customerNum = []

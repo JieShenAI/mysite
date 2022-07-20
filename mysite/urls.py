@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app.views import ccgp, account
+from app.views import ccgp, account, sql, data
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -31,4 +31,8 @@ urlpatterns = [
     path('logout/', account.logout),
     path('image/code/', account.image_code),
     path('user/register/', account.register),
+
+    # 数据展示
+    path('data/test/', sql.my_custom_sql),
+    path('data/nianjian/', data.nianjian)
 ]
