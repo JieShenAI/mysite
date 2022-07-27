@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+    <style>
+        .borderChoose {
+            background-color:rgb(0,176,236,0.5);
+        }
+
+        .iconfile {
+            width: 100px;
+            height: 100px;
+        }
+
+        .iconContainer {
+            float: left;
+            margin: 0 20px;
+        }
+
+        .icon {
+            width: 100%;
+            height: 100%;
+            /* vertical-align: -0.15em; */
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        .iconName span{
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-left: 100px;">
+        <div class="iconContainer">
+            <img class="iconfile" src="/static/iconfont/img/iconfile.svg">
+            <!-- <div class="iconName">编制产业发展</div> -->
+            <div class="iconName text-center">
+                <span>总体规划</span>
+            </div>
+        </div>
+        <div class="iconContainer">
+            <img class="iconfile" src="/static/iconfont/img/iconfile.svg">
+            <div class="iconName">
+                <span>详细规划</span>
+            </div>
+
+        </div>
+        <div class="iconContainer">
+            <img class="iconfile" src="/static/iconfont/img/iconfile.svg">
+            <div class="iconName text-center">
+                <span>专项规划</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(".iconContainer").click(function () {
+        $(".iconContainer").removeClass("borderChoose");
+        $(this).addClass("borderChoose");
+    });
+</script>
+
+</html>

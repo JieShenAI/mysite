@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>中国GDP分布图</title>
+    <link rel="stylesheet" type="text/css" href="/static/nianjian/css/main.css">
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <!-- Echarts3 -->
+    <script type="text/javascript" src="/static/nianjian/lib/echarts.min.js"></script>
+    <!-- 全国344个市、区、州对应的数字编号 -->
+    <script type="text/javascript" src="/static/nianjian/js/citymap.js"></script>
+</head>
+
+<body>
+
+<div class="mapDiv" style="width: 500px;">
+    <div id="main" style="width: 500px;height:500px;"></div>
+    <div class="modal">
+        <div id="trend-line">
+            <!-- js渲染趋势图数据 -->
+            <div id="line-trend"></div>
+        </div>
+    </div>
+
+    <div style="float: right;">
+        <button id="goBack">返回上一级</button>
+    </div>
+
+    <div style="width: 600px;">
+        <div class="row col-md-8 col-md-offset-2 clearfix">
+            <div style="margin: 0 auto;position: relative" class="areasChoose clearfix">
+
+            </div>
+        </div>
+
+        <div class="input-group mulAreaChoose col-md-8 col-md-offset-2">
+            <span class="input-group-addon" id="basic-addon1">多选地区名称</span>
+            <input type="text" class="form-control mulAreaTitle" placeholder="请输入" aria-describedby="basic-addon1"
+                   style="height: 50px;">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/nianjian/lib/jquery.1.9.1.min.js"></script>
+<script src="/static/nianjian/lib/vue.2.6.10.js"></script>
+<script type="text/javascript" src="/static/nianjian/js/common.js"></script>
+<script type="text/javascript" src="/static/nianjian/js/appSimple.js"></script>
+<script src="/static/plugins/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    $(".mulAreaChoose").hide();
+    $(".areaDelete").on("click", function () {
+        let v = $(this).siblings().html();
+        // 需要从数组里面删除那个元素
+        delete areasChoose[v];
+        console.log("delete " + areasChoose);
+        if (Object.keys(areasChoose).length == 1) {
+            $(".mulAreaChoose").hide();
+        }
+    })
+    $('.mulAreaTitle').keypress(function (event) {
+        var keynum = (event.keyCode ? event.keyCode : event.which);
+        if (keynum == '13') {
+            let v = $(this).val();
+            alert(v);
+        }
+    });
+</script>
+</html>

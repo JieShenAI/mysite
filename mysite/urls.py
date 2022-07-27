@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app.views import ccgp, account, sql, data
+from app.views import ccgp, account, sql, data, jsons, papers
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -34,5 +34,19 @@ urlpatterns = [
 
     # 数据展示
     path('data/test/', sql.my_custom_sql),
-    path('data/nianjian/', data.nianjian)
+
+    # map
+    path('data/nianjian/', data.nianjian),
+    path('data/mapSimple',papers.chooseArea),
+
+    # 文档页面
+    path('paper/', papers.show_paper),
+
+    # json 数据交互
+    path('save_paper/', jsons.save_paper),
+    path('demo/', jsons.demo),
+
+    # paperAnalysis
+    path('paperAnalysis/',papers.paperAnalysis)
+
 ]

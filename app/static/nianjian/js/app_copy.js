@@ -30,10 +30,7 @@ function loadMap(searchtime) {
     /** mapJsonData
       0: {id: '710000', name: '台湾'}
       1: {id: '130000', name: '河北'}
-
      */
-
-    $("#select-date").val(searchtime);
 
     //注册地图
     echarts.registerMap(mapName, data);
@@ -99,6 +96,8 @@ function loadMap(searchtime) {
 
 //地图单击事件
 chart.on("click", function (params) {
+  console.log("点击");
+  console.log(params);
   for (var key in params.data) {
     console.log(key + ":" + params.data[key]);
   }

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # 'corsheaders',  # 允许跨域访问，正式上线需要删除
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'corsheaders.middleware.CorsMiddleware',  # 允许跨域访问，正式上线需要删除
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,14 +56,16 @@ MIDDLEWARE = [
     # 'app.middleware.auth.AuthMiddleware',
 ]
 
+# CORS_ORIGIN_ALLOW_ALL = True  # 允许跨域访问，正式上线需要删除
+# CORS_ALLOW_CREDENTIALS = True  # 允许跨域访问，正式上线需要删除
+
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': [BASE_DIR / 'templates']
-        'DIRS': []
-        ,
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

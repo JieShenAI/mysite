@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>规划辅助系统</title>
+    <link rel="stylesheet" href="/static/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .leftframe {
+            height: 800px;
+        }
+
+        .paperHead {
+            height: 50px;
+            padding-top: 15px;
+            background: linear-gradient(90deg, rgb(0,176,236), rgb(6, 233, 176));
+        }
+
+        .headframe {
+            height: 100px;
+        }
+
+        .rightframe{
+            height: 800px;
+        }
+    </style>
+</head>
+
+<body style="margin:0;padding:0;overflow:hidden;">
+
+    <div class="container-fluid">
+
+        <div class="row paperHead" style="height: 50px;">
+
+            <div class="col-md-2 text-center">用户名</div>
+            <div class="col-md-8 text-center">用户名</div>
+            <div class="col-md-2 text-center">信息</div>
+
+        </div>
+
+        <div class="row">
+
+            <iframe src="/static/html/meau.html" style="border:5px;padding:0px;margin:0px" name="leftframe"
+                frameborder="1" class="col-md-2 leftframe" scrolling="no" marginwidth="0px"></iframe>
+
+            <iframe src="/static/html/paperType.html" name="rightframe" frameborder="1"
+                class="col-md-10 rightframe"></iframe>
+
+        </div>
+
+    </div>
+
+    <div class="btn">
+        <button>
+            点击
+        </button>
+    </div>
+
+</body>
+<script>
+    $(".btn").click(
+        function (params) {
+            $(".leftframe").attr("src", "./left2.html");
+        }
+    );
+</script>
+
+</html>

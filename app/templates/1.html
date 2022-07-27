@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+<div>
+    <button class="btn">
+        getJSON
+    </button>
+</div>
+
+<div>
+    <button class="postBtn">
+        Post
+    </button>
+</div>
+
+</body>
+<script>
+    // var data;
+    $(".btn").click(function () {
+        $.getJSON("/static/json/papers/1.json", function (result) {
+            // $.each(result, function (i, field) {
+            //     $("div").append(field + " ");
+            // });
+            var data = result;
+            console.log(data);
+        });
+    });
+
+    $(".postBtn").click(function () {
+        var url = "/save_paper/";
+        $.post(url,
+            {
+                fid: "1",
+                name: "Donald Duck",
+                city: "Duckburg"
+            },
+            function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    });
+</script>
+
+</html>

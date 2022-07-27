@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档撰写</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet"> -->
+    <link href="/static/wangeditor/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
+    <script src="/static/plugins/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        html,
+        body {
+            background-color: #fff;
+            height: 100%;
+            overflow: hidden;
+            color: #333;
+        }
+
+        #top-container {
+            border-bottom: 1px solid #e8e8e8;
+            padding-left: 30px;
+        }
+
+        #editor-toolbar {
+            width: 1350px;
+            background-color: #FCFCFC;
+            margin: 0 auto;
+        }
+
+        #content {
+            height: calc(100% - 40px);
+            background-color: rgb(245, 245, 245);
+            overflow-y: auto;
+            position: relative;
+        }
+
+        #editor-container {
+            width: 850px;
+            margin: 30px auto 150px auto;
+            background-color: #fff;
+            padding: 20px 50px 50px 50px;
+            border: 1px solid #e8e8e8;
+            box-shadow: 0 2px 10px rgb(0 0 0 / 12%);
+        }
+
+        #title-container {
+            padding: 20px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        #title-container input {
+            font-size: 30px;
+            border: 0;
+            outline: none;
+            width: 100%;
+            line-height: 1;
+        }
+
+        #editor-text-area {
+            min-height: 900px;
+            margin-top: 20px;
+        }
+
+        .seeTitle {
+            background: antiquewhite;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="top-container"></div>
+<div style="border-bottom: 1px solid #e8e8e8;">
+    <div id="editor-toolbar"></div>
+</div>
+<div style="width: 200px;float:left; margin-left: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2" style="height:600px; background-color: #fff;">
+                <div class="text-center" style="height: 50px; line-height:50px;">
+                    <a href="#" style="text-decoration: none;color: white;display: block;">文本编写</a>
+                </div>
+                <div class="row">
+                    <!-- <div style="height: 1px;background-color: black; width: 100%;"></div> -->
+                </div>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title" style="text-align: center;">
+                                <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                                   aria-controls="collapseOne" style="display: block;">
+                                    第一章
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingOne" data-toggle="collapse">
+                            <ul class="list-group">
+                                <div>
+                                    <li class="list-group-item paper">
+                                        第一节
+                                    </li>
+                                </div>
+
+                                <li class="list-group-item paper">第二节</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title" style="text-align: center;">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapseTwo"
+                                   aria-expanded="true" aria-controls="collapseTwo" style="display: block;">
+                                    第二章
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingTwo">
+                            <ul class="list-group">
+                                <li class="list-group-item paper">第一节</li>
+                                <li class="list-group-item paper">第二节</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title" style="text-align: center;">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree"
+                                   aria-expanded="true" aria-controls="collapseThree" style="display: block;">
+                                    第三章
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingThree">
+                            <!-- <div class="panel-body"> -->
+                            <ul class="list-group">
+                                <ul class="list-group">
+                                    <li class="list-group-item paper">
+                                        <a href="#">第一节</a>
+                                    </li>
+                                    <li class="list-group-item paper">第二节</li>
+                                </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn">点击</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div id="editor-container">
+        <div id="title-container">
+            <input placeholder="Page title...">
+        </div>
+        <div id="editor-text-area"></div>
+    </div>
+</div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js"></script> -->
+<script src="/static/wangeditor/index.js"></script>
+<script>
+    const E = window.wangEditor
+
+    // 切换语言
+    const LANG = location.href.indexOf('lang=en') > 0 ? 'en' : 'zh-CN'
+    E.i18nChangeLanguage(LANG)
+
+    const editorConfig = {
+        placeholder: 'Type here...',
+        scroll: false, // 禁止编辑器滚动
+        MENU_CONF: {
+            uploadImage: {
+                fieldName: 'your-fileName',
+                base64LimitSize: 10 * 1024 * 1024 // 10M 以下插入 base64
+            }
+        },
+        // 用户编辑网页时
+        onChange(editor) {
+            console.log(editor.getHtml())
+        }
+    }
+
+    // 先创建 editor
+    const editor = E.createEditor({
+        selector: '#editor-text-area',
+        content: [],
+        // html: '',
+        config: editorConfig
+    })
+
+    // editor.
+    editor.setHtml();
+
+    // 创建 toolbar
+    const toolbar = E.createToolbar({
+        editor,
+        selector: '#editor-toolbar',
+        config: {
+            excludeKeys: 'fullScreen',
+        }
+    })
+
+    // 点击空白处 focus 编辑器
+    document.getElementById('editor-text-area').addEventListener('click', e => {
+        if (e.target.id === 'editor-text-area') {
+            editor.blur()
+            editor.focus(true) // focus 到末尾
+        }
+    })
+</script>
+<script>
+    (function () {
+        $('.btn').click(function () {
+            var preHtml = editor.getHtml();
+            content = '<table style="width: 100%;"><tbody><tr><th colSpan="1" rowSpan="1" width="auto"></th><th colSpan="1" rowSpan="1" width="auto"></th><th colSpan="1" rowSpan="1" width="auto"></th><th colSpan="1" rowSpan="1" width="auto"></th></tr><tr><td colSpan="1" rowSpan="1" width="auto">fda</td><td colSpan="1" rowSpan="1" width="auto">fa</td><td colSpan="1" rowSpan="1" width="auto">fa</td><td colSpan="1" rowSpan="1" width="auto">fad</td></tr><tr><td colSpan="1" rowSpan="1" width="auto">fa</td><td colSpan="1" rowSpan="1" width="auto">52</td><td colSpan="1" rowSpan="1" width="auto"></td><td colSpan="1" rowSpan="1" width="auto"></td></tr></tbody></table><p><br></p>';
+            editor.setHtml(preHtml + content);
+            // alert(preHtml);
+        });
+    })();
+</script>
+<script>
+    var pre_idx = 0;
+    $('li').click(function () {
+        $(".paper").removeClass("seeTitle");
+        $(this).addClass("seeTitle");
+        var idx = $(this).index(".paper");
+        // 保存上一份的数据
+        var url = "/save_paper/";
+        data = {};
+        data[pre_idx] = editor.getHtml();
+        data["fid"] = 1;
+        $.post(url,
+            data,
+            function (info, status) {
+                data = info;
+                console.log(data);
+                editor.setHtml(data[idx]);
+            }
+        );
+
+        // 展示新页面的数据
+        editor.setHtml();
+        pre_idx = idx;
+        console.log("pre_idx: " + pre_idx)
+    })
+
+</script>
+
+
+<script>
+    (function () {
+        $.ajax({
+            url: '/static/json/papers/1.json',
+            type: 'get',
+            dataType: 'json',
+            success: function (datas) {
+                {#alert(datas);#}
+                {#alert(datas["0"]);#}
+                editor.setHtml(datas["0"]);
+            }
+        })
+    })();
+</script>
+
+</body>
+
+</html>
