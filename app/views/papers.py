@@ -10,4 +10,4 @@ def chooseArea(request):
 
 
 def paperAnalysis(request):
-    return render(request, "paperAnalysis.html")
+    return render(request, "struct.html")
