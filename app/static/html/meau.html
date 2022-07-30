@@ -17,6 +17,25 @@
         li {
             list-style: none;
         }
+                a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:active {
+            text-decoration: none;
+        }
 
         .item {
             width: 100%;
@@ -33,7 +52,8 @@
         }
 
         .choose {
-            background: rgb(6, 233, 176);
+            background: #5CB85C;
+            border-radius: 20px;
         }
     </style>
 </head>
@@ -63,9 +83,6 @@
         function () {
             $(".item").removeClass("choose");
             $(this).addClass("choose");
-            var idx = $(this).index();
-            $(".content").hide();
-            $(".content").eq(idx).show();
         }
     );
 </script>
