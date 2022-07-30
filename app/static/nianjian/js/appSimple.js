@@ -221,7 +221,7 @@ var curID;
 var curName;
 var s = '<div class="alert alert-warning" style="float: left"><a href="#" class="close areaDelete" data-dismiss="alert">&times;</a><strong>{0}</strong></div>';
 var areasChoose = {}
-
+var mulAreaName = "";
 /**
  * 右键添加选中地区
  */
@@ -252,6 +252,7 @@ chart.on("contextmenu", (params) => {
         console.log(areasChoose);
         if (Object.keys(areasChoose).length == 1) {
             $(".mulAreaChoose").hide();
+            mulAreaName = "";
         }
     })
 });
@@ -314,24 +315,24 @@ function renderMap(mapTitle, mapJson, customerNum, colorMax = 1500) {
             // formatter: '{b}\n{c}人',
             formatter: "{b}",
         },
-        toolbox: {
-            //工具box
-            show: true,
-            orient: "vertical",
-            left: "right",
-            top: "center",
-            right: 20,
-            feature: {
-                dataView: {readOnly: false},
-                restore: {},
-                saveAsImage: {},
-            },
-            iconStyle: {
-                normal: {
-                    color: "#fff",
-                },
-            },
-        },
+        // toolbox: {
+        //     //工具box
+        //     show: true,
+        //     orient: "vertical",
+        //     left: "right",
+        //     top: "center",
+        //     right: 20,
+        //     feature: {
+        //         dataView: {readOnly: false},
+        //         restore: {},
+        //         saveAsImage: {},
+        //     },
+        //     iconStyle: {
+        //         normal: {
+        //             color: "#fff",
+        //         },
+        //     },
+        // },
         //左下角的颜色条
         series: [
             {

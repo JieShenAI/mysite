@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/static/bootstrap/3.4.1/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         .borderChoose {
-            background-color:rgb(0,176,236,0.5);
+            background-color: rgb(6, 233, 176);
         }
 
         .iconfile {
@@ -30,43 +32,89 @@
             overflow: hidden;
         }
 
-        .iconName span{
+        .iconName span {
             display: block;
             text-align: center;
+        }
+
+        .nextButton {
+            margin-top: 60px;
         }
     </style>
 </head>
 
 <body>
-    <div style="margin-left: 100px;">
-        <div class="iconContainer">
+
+<div class="container">
+    <div class="row col-xs-8 col-xs-offset-2">
+        <h2>
+            请选择规划文档类型
+        </h2>
+        <div class="iconContainer ztgh">
             <img class="iconfile" src="/static/iconfont/img/iconfile.svg">
             <!-- <div class="iconName">编制产业发展</div> -->
             <div class="iconName text-center">
                 <span>总体规划</span>
             </div>
         </div>
-        <div class="iconContainer">
+        <div class="iconContainer xxgh">
             <img class="iconfile" src="/static/iconfont/img/iconfile.svg">
-            <div class="iconName">
+            <div class="iconName text-center">
                 <span>详细规划</span>
             </div>
 
         </div>
-        <div class="iconContainer">
+        <div class="iconContainer zxgh">
             <img class="iconfile" src="/static/iconfont/img/iconfile.svg">
             <div class="iconName text-center">
                 <span>专项规划</span>
             </div>
         </div>
     </div>
+    <div class="row  col-xs-2 col-xs-offset-6 nextButton">
+        <button type="button" class="btn btn-success">下一步</button>
+    </div>
+</div>
+
 </body>
 
 <script>
-    $(".iconContainer").click(function () {
+    var choose = false;
+    $(".iconContainer.ztgh").click(function () {
         $(".iconContainer").removeClass("borderChoose");
         $(this).addClass("borderChoose");
+        choose = true;
     });
+    $(".xxgh").click(
+        function () {
+            alert("敬请期待");
+        }
+    )
+    $(".zxgh").click(
+        function () {
+            alert("敬请期待");
+        }
+    )
+    $(".nextButton").click(
+        function () {
+            if (!choose) {
+                alert("您还没有选择规划类型");
+            } else {
+                var url = window.location.href;
+                let idx = url.indexOf('?');
+                let params = url.slice(idx);
+                window.open("/static/html/struct.html" + params);
+            }
+        }
+    );
+    // function getUrlParam(name) {
+    //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    //     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    //     if (r != null) return unescape(r[2]); return null; //返回参数值
+    // }
+
+    // var xx = getUrlParam('reurl');
+
 </script>
 
 </html>

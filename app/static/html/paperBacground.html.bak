@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/static/swiper/swiper-bundle.min.css"/>
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            /* background: #fff; */
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            /* text-align: center; */
+            font-size: 18px;
+            /* border: 2px red; */
+            margin: 0 auto;
+            /* background: #fff; */
+            /* background: aqua; */
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-slide div {
+            margin: 0 auto;
+        }
+
+        .swiperArrow {
+            position: relative;
+            float: right;
+            margin-right: 10%;
+            width: 10%;
+            height: 50px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- <div class="swiperContent"> -->
+
+<div class="content">
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-no-swiping">
+                <h2>1. 规划区域介绍</h2>
+                <textarea name="" id="" cols="125" rows="20" disabled></textarea>
+                <textarea name="" id="" cols="125" rows="20" class="test"></textarea>
+            </div>
+            <div class="swiper-slide swiper-no-swiping">
+                <h2>2. 重要领导人讲话精神</h2>
+                <textarea name="" id="" cols="125" rows="20" disabled></textarea>
+                <textarea name="" id="" cols="125" rows="20"></textarea>
+            </div>
+            <div class="swiper-slide swiper-no-swiping">
+                <h2>3. 相关政策文件</h2>
+                <textarea name="" id="" cols="125" rows="20" disabled></textarea>
+                <textarea name="" id="" cols="125" rows="20"></textarea>
+            </div>
+            <div class="swiper-slide swiper-no-swiping">
+                <h2>4. 宏观发展形势</h2>
+                <textarea name="" id="" cols="125" rows="20" disabled></textarea>
+                <textarea name="" id="" cols="125" rows="20"></textarea>
+            </div>
+            <div class="swiper-slide swiper-no-swiping">
+                <h2>5. 规划目的与意义</h2>
+                <textarea name="" id="" cols="125" rows="20" disabled></textarea>
+                <textarea name="" id="" cols="125" rows="20"></textarea>
+            </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<!-- </div> -->
+<div class="swiperArrow">
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<div>
+    <button class="show">点击</button>
+</div>
+
+<!-- Swiper JS -->
+<script src="/static/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        pagination: {
+            el: ".swiper-pagination",
+            type: "progressbar",
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+<script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+<script>
+
+    // "1. 规划区域介绍",
+    // "2. 重要领导人讲话精神",
+    // "3. 相关政策文件",
+    // "4. 宏观发展形式",
+    // "5. 规划目的与意义"
+
+    var slides = [
+        {
+            title: "1. 规划区域介绍",
+            content: "模板：吉林省产业结构转型升级报告东北地区在中国经济版图中具有举足轻重的地位。 东北地区等老工业基地是新中国工业的摇篮。        党和国家在东北等老工业地区集中投资建设了具有相当规模的以能源、原材料、装备制造为主的战略产业和骨干企业，为我国形成独立、完整的工业体系和国民经济体系做出重大贡献。由于种种原因，随着改革开放的不断深入，老工业基地的体制性、结构性矛盾日益显现，进一步发展面临着许多困难和问题。"
+        },
+        {
+            title: "2. 重要领导人讲话精神",
+            content: "模板：吉林省产业结构转型升级报告2003 年， 温家宝两次赴东北，实地考察了部分国有大企业，多次召开座谈会讨论振兴东北老工业基地大计，强调要把老工业基地调整、改造和振兴摆到更加突出的位置，走出加快振兴新路子。 "
+        },
+        {
+            title: "3. 相关政策文件",
+            content: "模板一：吉林省产业结构转型升级报告2003 年 10 月，中共中央、国务院正式印发《关于实施东北地区等老工业基地振兴战略的若干意见》，制定了振兴战略的各项方针政策，吹响了振兴东北老工业基地的号角。 12 月，国务院振兴东北地区等老工业基地领导小组成立。此后，中央先后在东北地区实行了一系列促进振兴的战略与政策。例如， 2007 年出台《东北地区振兴“十一五”规划》、 2009 年出台《国务院关于进一步实施东北地区等老工业基地振兴战略的若干意见》、 2012 年出台《东北振兴“十二五”规划》、 2014 年出台《“关于近期支持东北振兴若干重大政策举措的意见”》、2016 年 4 月出台《中共中央 国务院关于全面振兴东北地区等老工业基地的若干意见》，2016 年 11 月出台《关于深入推进实施新一轮东北振兴战略加快推动东北地区经济企稳向好若干重要举措的意见》、 2016 年低出台《东北振兴“十三五”规划》。 2017 年 3 月国务院出台《东北地区与东部地区部分省市对口合作工作方案》。"
+        },
+        {
+            title: "4. 宏观发展形式",
+            content: "模板一：美安科技新城产业发展规划未来10年间，伴随国内外经济环境的新变化，我国将全面落实科学发展观，大力推进工业化、城镇化、信息化和农业现代化，实现全国进入工业化后期阶段的战略目标。面对新形势和新任务，打造新平台，发展新产业，拓展新空间，建设功能化的产业新城，成为国内诸多地区加快发展的战略选择和主要着力点，并希望借此带来一方经济的繁荣兴旺和提供强劲持久的增长动力。"
+        },
+        {
+            title: "5. 规划目的与意义",
+            content: "模板一：吉林经济结构转型升级研究报告在新一轮东北振兴发展战略下，吉林省作为东三省的重镇，而且目前是东三省经济发展态势最好的省，其如何在新发展阶段彻底走出振兴发展新路子，毫无疑问是一个极其重大的课题。这不仅仅关乎吉林省近三千万老百姓的繁荣昌盛，还关乎东北振兴的大局，更关乎中华民族伟大复兴的征程。有鉴于此，在吉林省省委省政府的大力支持与领导下，由吉林省发展与改革委员会牵引头与北京大学新结构经济学研究中心联手合作开展吉林省经济结构转型升级研究。该课题旨在运用新结构经济学梳理包括吉林省在内的东北发展的历程，探究东北现象的根本原因， 第一轮国家东北振兴战略政策的得失，……"
+        }
+    ]
+
+    var slidesLen = slides.length;
+    for (let index = 0; index < slidesLen; index++) {
+        let content = slides[index].content;
+        let v = $(".swiper-slide").eq(index).find("textarea").first().val(content);
+    }
+</script>
+
+<script>
+    var areaIDArr = parent.areaIDArr.split(',')
+    var info = "";
+
+    function getInfo(data) {
+        if (Object.keys(data).length == 0) {
+            return "";
+        }
+        ignore = ["行政代码", "省级", "市级", "县级", "统计年份"];
+
+        level = ["省级", "市级", "县级"]
+
+        let ans = "";
+        console.log(data);
+        for (let i = 0; i < level.length; i++) {
+            let k = level[i];
+            if (data[k].length > 1) {
+                ans += data[k];
+            }
+        }
+
+        for (var k in data) {
+            if (ignore.includes(k)) {
+                continue;
+            }
+            if (k.endsWith(')')) {
+                prefix = k.slice(0, k.indexOf('('));
+                ans += "," + prefix + data[k] + k.slice(k.indexOf('(') + 1, -1);
+            }
+            if (k.endsWith('）')) {
+                prefix = k.slice(0, k.indexOf('（'));
+                ans += "," + prefix + data[k] + k.slice(k.indexOf('（') + 1, -1);
+            }
+        }
+        return ans + "。\n";
+    }
+
+    function getAreaJson(year, areaID) {
+        let areaData;
+        $.ajax({
+            type: "get",
+            url: "/data/areainfo",
+            data: {year: year, areaID: areaID},
+            async: false,
+            success: function (data) {
+                areaData = getInfo(data);
+            }
+        });
+        return areaData;
+    }
+
+    $(".show").click(
+        function () {
+            let areadata = "";
+            for (let i = 0; i < areaIDArr.length; i++) {
+                areadata += getAreaJson(2019, areaIDArr[i]);
+            }
+            $(".test").val(areadata);
+        }
+    );
+</script>
+</body>
+
+</html>

@@ -37,7 +37,7 @@ urlpatterns = [
 
     # map
     path('data/nianjian/', data.nianjian),
-    path('data/mapSimple',papers.chooseArea),
+    path('data/mapSimple', papers.chooseArea),
 
     # 文档页面
     path('paper/', papers.show_paper),
@@ -47,6 +47,6 @@ urlpatterns = [
     path('demo/', jsons.demo),
 
     # paperAnalysis
-    path('paperAnalysis/',papers.paperAnalysis)
-
+    path('paperAnalysis/', papers.paperAnalysis),
+    path('data/areainfo', data.getInfoByID)
 ]

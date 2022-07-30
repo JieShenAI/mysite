@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = ["421000", "421100", "422800"];
+    var info = "";
+
+    function getInfo(data) {
+        if(Object.keys(data).length == 0){
+            return "";
+        }
+        ignore = ["行政代码", "省级", "市级", "县级", "统计年份"];
+
+        level = ["省级", "市级", "县级"]
+
+        let ans = "";
+        console.log(data);
+        for (let i = 0; i < level.length; i++) {
+            let k = level[i];
+            if (data[k].length > 1) {
+                ans += data[k];
+            }
+        }
+
+        for (var k in data) {
+            if (ignore.includes(k)) {
+                continue;
+            }
+            if (k.endsWith(')')) {
+                prefix = k.slice(0, k.indexOf('('));
+                ans += "," + prefix + data[k] + k.slice(k.indexOf('(') + 1, -1);
+            }
+            if (k.endsWith('）')) {
+                prefix = k.slice(0, k.indexOf('（'));
+                ans += "," + prefix + data[k] + k.slice(k.indexOf('（') + 1, -1);
+            }
+        }
+        return ans + ";";
+    }
+
+    function getAreaJson(year, areaID) {
+        let areaData;
+        $.ajax({
+            type: "get",
+            url: "/data/areainfo",
+            data: {year: year, areaID: areaID},
+            async: false,
+            success: function (data) {
+                areaData = getInfo(data);
+            }
+        });
+        return areaData;
+    }
+
+    (
+        function () {
+            for (let i = 0; i < arr.length; i++) {
+                console.log(getAreaJson(2019, arr[i]));
+            }
+        }
+    )();
+
+</script>
+
+</html>
