@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST传参</title>
+    <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <script>
+
+        (
+            function () {
+                let data = {
+                    1: 10,
+                    2: 20,
+                    fid: 8888,
+                    txt: "未来已来"
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/files/save",
+                    data: data,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+        )();
+    </script>
+</body>
+
+</html>

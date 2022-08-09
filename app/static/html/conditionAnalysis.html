@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>产业发展现状与条件分析</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/static/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/static/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            /* background: #fff; */
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin: 5px 0px;
+        }
+
+        .content .form-control {
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="content" style="text-align: center">
+                <h2>产业发展现状</h2>
+                <textarea class="form-control template" name="" id="" disabled></textarea>
+                <textarea class="form-control analysetxt" name="" id=""></textarea>
+            </div>
+        </div>
+        <div class="row col-xs-2 col-xs-offset-1" style="margin-top: 20px;">
+            <span><button class="btn btn-success startAnalyse">自动填充</button></span>
+            <span><button class="btn btn-success paperSave">保存</button></span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+    <script>
+        var templateStr = "湖北省武汉市,人均地区生产总值140927.00000元/人,地区生产总值增长率-3.74000%,地区生产总值15616.10000当年价格，万元,年末户籍人口1108.10万人,地方财政国内增值税607.11000亿元。";
+        $(".template").val(templateStr);
+    </script>
+
+    <script>
+
+        // 获取云端已保存的数据
+        (
+            function () {
+                $.ajax({
+                    type: "get",
+                    url: "/files/query",
+                    data: { fid: 8888 }, // 以后要修改fid的值，不能写死
+                    success: function (data) {
+                        $(".analysetxt").val(data["产业发展现状与条件分析"]);
+                    }
+                });
+            }
+        )();
+
+        var areaIDArr = parent.areaIDArr.split(',')
+        var info = "";
+
+        function getInfo(data) {
+            if (Object.keys(data).length == 0) {
+                return "";
+            }
+            ignore = ["行政代码", "省级", "市级", "县级", "统计年份"];
+
+            level = ["省级", "市级", "县级"]
+
+            let ans = "";
+            console.log(data);
+            for (let i = 0; i < level.length; i++) {
+                let k = level[i];
+                if (data[k].length > 1) {
+                    ans += data[k];
+                }
+            }
+
+            for (var k in data) {
+                if (ignore.includes(k)) {
+                    continue;
+                }
+                if (k.endsWith(')')) {
+                    prefix = k.slice(0, k.indexOf('('));
+                    ans += "," + prefix + data[k] + k.slice(k.indexOf('(') + 1, -1);
+                }
+                if (k.endsWith('）')) {
+                    prefix = k.slice(0, k.indexOf('（'));
+                    ans += "," + prefix + data[k] + k.slice(k.indexOf('（') + 1, -1);
+                }
+            }
+            return ans + "。\n";
+        }
+
+        function getAreaJson(year, areaID) {
+            let areaData;
+            $.ajax({
+                type: "get",
+                url: "/data/areainfo",
+                data: { year: year, areaID: areaID },
+                async: false,
+                success: function (data) {
+                    areaData = getInfo(data);
+                }
+            });
+            return areaData;
+        }
+
+        $(".startAnalyse").click(
+            function () {
+                // 先获取当前的内容
+                let areadata = $(".analysetxt").val();
+                for (let i = 0; i < areaIDArr.length; i++) {
+                    areadata += getAreaJson(2020, areaIDArr[i]);
+                }
+                console.log("val: " + areadata);
+                $(".analysetxt").val(areadata);
+            }
+        );
+
+        function generatePostData() {
+            let txt = $(".analysetxt").val();
+            return {
+                fid: 8888,
+                "产业发展现状与条件分析": txt
+            };
+        }
+
+        $(".paperSave").click(
+            function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/files/save",
+                    data: generatePostData(),
+                    success: function (data) {
+                        alert("保存成功");
+                    }
+                })
+            }
+        );
+
+    </script>
+</body>
+
+</html>
