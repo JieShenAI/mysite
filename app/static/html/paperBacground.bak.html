@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>规划编制背景</title>
+  <title>Swiper demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="/static/swiper/swiper-bundle.min.css" />
@@ -181,43 +181,6 @@
       let v = $(".swiper-slide").eq(index).find("textarea").first().val(content);
     }
 
-    /**
-     * 初始化输入款
-    */
-    function initTextarea(params) {
-      // 写入内容
-      let textArea = $("textarea");
-      let title = $("h2");
-      contentArr = []
-      for (let index = 0; index < textArea.length; index++) {
-        if (index % 2 === 0) {
-          continue;
-        }
-        let key = title[parseInt(index / 2)].innerText;
-        let v = params["规划编制背景"][key];
-        textArea[index].value = typeof v !== "undefined" ? v : "";
-      }
-    }
-
-    /**
-     * 初始化时，获取云端已保存的文字
-     */
-    (
-      function () {
-        $.ajax({
-          url: "/files/query",
-          type: "GET",
-          data: {
-            fid: 8888 // 后续修改 fid
-          },
-          success: function (data) {
-            initTextarea(data);
-          }
-        });
-
-      }
-    )();
-
     // 使用模板
     $(".copyTemplate").click(
       function () {
@@ -227,43 +190,19 @@
       }
     );
 
-    /**
-     * 收集输入框内的文本数据，并转成json
-     */
     function generatePostData() {
+      let txt = $(".analysetxt").val();
+      return {
+        fid: 8888,
+        "产业发展现状与条件分析": txt
+      };
+    }
 
-      let postData = { "规划编制背景": {}, "fid": 8888 }
-
-      // 获取内容
-      let textArea = $("textarea");
-      contentArr = []
-      for (let index = 0; index < textArea.length; index++) {
-        if (index % 2 === 0) {
-          continue;
-        }
-        contentArr.push(textArea[index].value);
-      }
-
-      // 获取标题
-      for (const idx in slides) {
-        let key = slides[idx].title;
-        postData["规划编制背景"][key] = contentArr[idx];
-      }
-      console.log(postData);
-      return JSON.stringify(postData);
-    };
-
-    /**
-     * 点击保存，将输入框内容POST上传
-     */
     $(".paperSave").click(
-
       function () {
         $.ajax({
           type: "POST",
-          url: "/files/json/save",
-          dataType: 'json',
-          contentType: "application/json; charset=utf-8",
+          url: "/files/save",
           data: generatePostData(),
           success: function (data) {
             alert("保存成功");

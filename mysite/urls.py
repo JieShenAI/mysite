@@ -49,6 +49,7 @@ urlpatterns = [
     # paperAnalysis
     path('paperAnalysis/', papers.paperAnalysis),
     path('data/areainfo', data.getInfoByID),
-    path('files/save', jsons.save_by_fid),
+    path('files/save', jsons.save_by_fid),  # post传递字典
+    path('files/json/save', jsons.save_json_by_fid),  # post传递json
     path('files/query', jsons.queryJson)
 ]
