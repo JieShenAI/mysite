@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/bootstrap/3.4.1/css/bootstrap.min.css" />
     <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/static/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
@@ -45,35 +45,37 @@
 </head>
 
 <body>
-<div class="container-fluid">
-    <div class="row papernav">
-        <div class="col-xs-2">用户</div>
-        <div class="col-xs-8 text-center">系统</div>
-        <div class="col-xs-2">信息</div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2 papermeau">
-            <div class="row">
-                <iframe src="/static/html/meau.html" style="border:5px;padding:0px;margin:0px" name="leftframe"
-                        frameborder="1" class="col-md-2 leftframe" scrolling="no" marginwidth="0px"></iframe>
+    <div class="container-fluid">
+        <div class="row papernav">
+            <div class="col-xs-2">用户</div>
+            <div class="col-xs-8 text-center">系统</div>
+            <div class="col-xs-2">
+                <a href="/paperdown?fid=8888">导出文档</a>
             </div>
         </div>
-        <div class="col-xs-10">
+        <div class="row">
+            <div class="col-xs-2 papermeau">
+                <div class="row">
+                    <iframe src="/static/html/meau.html" style="border:5px;padding:0px;margin:0px" name="leftframe"
+                        frameborder="1" class="col-md-2 leftframe" scrolling="no" marginwidth="0px"></iframe>
+                </div>
+            </div>
+            <div class="col-xs-10">
 
-            <div class="row">
-                <iframe src="" style="border:0px;padding:0px;margin:0px" name="contentframe" frameborder="1"
+                <div class="row">
+                    <iframe src="" style="border:0px;padding:0px;margin:0px" name="contentframe" frameborder="1"
                         class="contentframe" scrolling="auto" marginwidth="0px"></iframe>
-                <!--
+                    <!--
                 <div class="col-xs-9">
 
                 </div>
                 <div class="col-xs-3 reference">
                 </div>
                 -->
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 <script>
     // 需要拿到get传递过来的参数

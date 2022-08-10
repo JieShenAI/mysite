@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app.views import ccgp, account, sql, data, jsons, papers
+from app.views import ccgp, account, sql, data, jsons, papers, files
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -51,5 +51,8 @@ urlpatterns = [
     path('data/areainfo', data.getInfoByID),
     path('files/save', jsons.save_by_fid),  # post传递字典
     path('files/json/save', jsons.save_json_by_fid),  # post传递json
-    path('files/query', jsons.queryJson)
+    path('files/query', jsons.queryJson),
+
+    # 导出规划文档
+    path("paperdown", files.paperDown)
 ]
