@@ -10,19 +10,21 @@ from http import HTTPStatus
 import simplejson
 
 
-def get_file_json_by_fid(fid):
+def get_file_json_by_fid(fid, test=False):
     s = f"app/static/json/papers/{fid}.json"  # 网站使用
-    # s = f"../static/json/papers/{fid}.json"  # 测试专用
-    # print("绝对: ", Path(s).absolute())
-    p = Path(s).read_text()
+    if test:
+        s = f"../static/json/papers/{fid}.json"  # 测试专用
+    print(Path(s).absolute())
+    p = Path(s).read_text(encoding="utf-8")
     if len(p) == 0:
         p = "{}"
     return json.loads(p)
 
 
-def write_file_json_by_id(fid, data):
+def write_file_json_by_id(fid, data, test=False):
     s = f"app/static/json/papers/{fid}.json"  # 网站使用
-    # s = f"../static/json/papers/{fid}.json" # 测试专用
+    if test:
+        s = f"../static/json/papers/{fid}.json"  # 测试专用
     json_str = json.dumps(data)
     Path(s).write_text(json_str)
 
@@ -120,7 +122,41 @@ def queryJson(request):
         return HttpResponse("只接受get传参", status=406)
 
 
+@csrf_exempt
+def receivePaper(request):
+    """
+        接收前端POST传过来的数据
+        保存到json文件中
+    """
+    if request.method == "POST":
+        data = simplejson.loads(request.body)
+        write_file_json_by_id("save", data)
+        return HttpResponse(content="200 ok", status=200)
+    else:
+        return HttpResponse("只接受POST传参", status=406)
+
+
+@csrf_exempt
+def printPost(request):
+    """
+        输出POST传递过来的参数
+    """
+    if request.method == "POST":
+        data = simplejson.loads(request.body)
+        return JsonResponse(data)
+    else:
+        return HttpResponse("只接受post传参", status=406)
+
+
+def _saveImg(ImgBase64):
+    import base64
+    img_data = base64.b64decode(ImgBase64)
+    with open("./test.png", "wb") as f:
+        f.write(img_data)
+        f.close()
+
+
 if __name__ == '__main__':
-    data = get_file_json_by_fid(8888)
+    data = get_file_json_by_fid("enshi", test=True)
     # write_file_json_by_id(2, data)
     print(data)

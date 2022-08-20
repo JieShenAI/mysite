@@ -1,6 +1,7 @@
+d = {'ch1': [{'h1': 'content1'}, {'textarea': 'contnt2'}]}
 
-if __name__ == '__main__':
-    s = '../static/json/2020/42.json'
-    with open(s) as f:
-        json_str = f.read()
-    print(json_str)
+# print(d.values())
+# print(list(a.values())[0])
+
+a,b = list(d.items())[0]
+print(a,b)

@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import json
 from django.contrib import admin
 from django.urls import path
 
@@ -54,5 +55,15 @@ urlpatterns = [
     path('files/query', jsons.queryJson),
 
     # 导出规划文档
-    path("paperdown", files.paperDown)
+    path("paperdown", files.paperDown),
+
+    # Vue
+
+    # post 参数输出测试
+    path("print/post", jsons.printPost),
+
+    # pat
+    # 接收Vue.$paper
+    path("paper/downword", files.downWord),
+    path("paper/upjson", jsons.receivePaper),
 ]
