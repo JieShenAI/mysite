@@ -113,6 +113,10 @@ def save_json_by_fid(request):
 def queryJson(request):
     if request.method == "GET":
         data = request.GET
+        cityID = data.get("cityID")
+        year = data.get("year")
+        if cityID and year:
+            return _getDataFromDataBase(cityID, year)
         fid = data.get('fid')
         if not fid:
             return HttpResponse("缺少fid参数", status=406)
@@ -120,6 +124,27 @@ def queryJson(request):
         return JsonResponse(json_data)
     else:
         return HttpResponse("只接受get传参", status=406)
+
+
+def _getDataFromDataBase(cityID, year):
+    from mysite.tools import get_conn_cursor, free_sql
+    # conn, cursor = get_conn_cursor()
+    sql = "select * from vue where cityID=%s and year=%s" % (cityID, year)
+
+    def _select(sql):
+        conn, cursor = get_conn_cursor()
+        res = []
+        try:
+            cursor.execute(sql)
+            res = cursor.fetchone()
+        except Exception as e:
+            print(e.args)
+        free_sql(conn, cursor)
+        return res
+    data = _select(sql)
+    if not data:
+        data = {}
+    return JsonResponse(data)
 
 
 @csrf_exempt

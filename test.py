@@ -1,8 +1,5 @@
-try:
-    response = FileResponse(open(fileLocation, 'rb'))
-    response['content_type'] = "application/octet-stream"
-    response['Content-Disposition'] = 'attachment; filename=' + \
-            os.path.basename(filename)
-        return response
-    except Exception:
-        raise Http404
+import re
+
+
+a = "http://localhost:8080/static/img/ch2-1.png"
+print()
