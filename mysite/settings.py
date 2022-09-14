@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 取消中间件用户登录检查，对所有人开放
-    # 'app.middleware.auth.AuthMiddleware',
+    'app.middleware.auth.AuthMiddleware',
 ]
 
 # CORS_ORIGIN_ALLOW_ALL = True  # 允许跨域访问，正式上线需要删除

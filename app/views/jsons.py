@@ -109,21 +109,24 @@ def save_json_by_fid(request):
     else:
         return HttpResponse("只接受POST传参", status=406)
 
-
+@csrf_exempt
 def queryJson(request):
-    if request.method == "GET":
-        data = request.GET
+    if request.method == "POST":
+        data = simplejson.loads(request.body)
         cityID = data.get("cityID")
         year = data.get("year")
         if cityID and year:
             return _getDataFromDataBase(cityID, year)
+        else:
+            return JsonResponse({"code": 406})
+    else:
+        # 以下代码，用于读取本地的json文件
+        data = request.GET
         fid = data.get('fid')
         if not fid:
             return HttpResponse("缺少fid参数", status=406)
         json_data = get_file_json_by_fid(fid)
         return JsonResponse(json_data)
-    else:
-        return HttpResponse("只接受get传参", status=406)
 
 
 def _getDataFromDataBase(cityID, year):
@@ -141,10 +144,11 @@ def _getDataFromDataBase(cityID, year):
             print(e.args)
         free_sql(conn, cursor)
         return res
+
     data = _select(sql)
     if not data:
         data = {}
-    return JsonResponse(data)
+    return JsonResponse({"code": 200, "data": data})
 
 
 @csrf_exempt

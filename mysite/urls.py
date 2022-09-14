@@ -17,7 +17,7 @@ import json
 from django.contrib import admin
 from django.urls import path
 
-from app.views import ccgp, account, sql, data, jsons, papers, files
+from app.views import ccgp, account, sql, data, jsons, papers, files, user
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -31,14 +31,14 @@ urlpatterns = [
     path('login/', account.login),
     path('logout/', account.logout),
     path('image/code/', account.image_code),
-    path('user/register/', account.register),
+    # path('user/register/', account.register), # 可以使用
 
     # 数据展示
     path('data/test/', sql.my_custom_sql),
 
     # map
     path('data/nianjian/', data.nianjian),
-    path('data/mapSimple', papers.chooseArea),
+    path('data/mapSimple/', papers.chooseArea),
 
     # 文档页面
     path('paper/', papers.show_paper),
@@ -49,18 +49,23 @@ urlpatterns = [
 
     # paperAnalysis
     path('paperAnalysis/', papers.paperAnalysis),
-    path('data/areainfo', data.getInfoByID),
-    path('files/save', jsons.save_by_fid),  # post传递字典
-    path('files/json/save', jsons.save_json_by_fid),  # post传递json
-    path('jsons/query', jsons.queryJson),
+    path('data/areainfo/', data.getInfoByID),
+    path('files/save/', jsons.save_by_fid),  # post传递字典
+    path('files/json/save/', jsons.save_json_by_fid),  # post传递json
+    path('jsons/query/', jsons.queryJson),
 
     # Vue
 
     # post 参数输出测试
-    path("print/post", jsons.printPost),
+    path("print/post/", jsons.printPost),
 
     # pat
     # 接收Vue.$paper
-    path("paper/downword", files.downWord),
-    path("paper/upjson", jsons.receivePaper),
+    path("paper/downword/", files.downWord),
+    path("paper/upjson/", jsons.receivePaper),
+
+    # token test
+    path('user/register/', user.register),
+    path('user/login/', user.login),
+
 ]

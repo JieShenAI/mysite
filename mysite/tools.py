@@ -42,6 +42,7 @@ def load_static():
     return json.loads(p.read_text())
 
 
+# 数据库连接配置与连接池
 def _get_cursor(host, port, user, sql_pwd, db):
     conn = pymysql.connect(host=host, port=port,
                            user=user, passwd=sql_pwd, charset='utf8', db=db)
@@ -57,7 +58,6 @@ def get_conn_cursor():
     port = sql_json.get("port")
     host = sql_json.get("host")
     return _get_cursor(host, port, user, sql_pwd, db)
-
 
 
 def free_sql(conn, cursor):
