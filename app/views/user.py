@@ -63,7 +63,7 @@ def login(request):
         else:
             return JsonResponse({"code": 500})
     else:
-        JsonResponse({"code": 406, "data": {"msg": "reject get"}})
+        return JsonResponse({"code": 406, "data": {"msg": "reject get"}})
 
 def _select_user(name_email, pwd_md5):
     conn, cursor = get_conn_cursor()
